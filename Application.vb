@@ -1,4 +1,3 @@
-﻿
 Imports System.IO
 Imports System.Convert
 
