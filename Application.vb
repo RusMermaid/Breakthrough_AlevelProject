@@ -16,6 +16,7 @@ Module Module1
         Private Sequence As CardCollection
         Private Discard As CardCollection
         Private Locks As List(Of Lock)
+        
         Private Score As Integer
         Private GameOver As Boolean
         Private CurrentLock As Lock
