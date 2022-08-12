@@ -136,6 +136,7 @@ Module Module1
                 If SequenceAsString.Length > 0 Then
                     SequenceAsString = ", " & SequenceAsString
                 End If
+        
                 SequenceAsString = Sequence.GetCardDescriptionAt(Count) & SequenceAsString
                 If CurrentLock.CheckIfConditionMet(SequenceAsString) Then
                     Return True
@@ -205,6 +206,7 @@ Module Module1
                     SetupCardCollectionFromGameFile(LineFromFile, Deck)
                 End Using
                 Return True
+
             Catch
                 Console.WriteLine("File not loaded")
                 Return False
@@ -222,11 +224,13 @@ Module Module1
                     While Not LineFromFile Is Nothing
                         Challenges = LineFromFile.Split(";").ToList()
                         Dim LockFromFile As New Lock
+    
                         For Each C In Challenges
                             Dim Conditions As New List(Of String)
                             Conditions = C.Split(",").ToList()
                             LockFromFile.AddChallenge(Conditions)
                         Next
+
                         Locks.Add(LockFromFile)
                         LineFromFile = MyStream.ReadLine()
                     End While
@@ -255,6 +259,7 @@ Module Module1
                     CurrentCard.Process(Deck, Discard, Hand, Sequence, CurrentLock, Choice, CardChoice)
                 End If
             End If
+
             While Hand.GetNumberOfCards() < 5 And Deck.GetNumberOfCards() > 0
                 If Deck.GetCardDescriptionAt(0) = "Dif" Then
                     MoveCard(Deck, Discard, Deck.GetCardNumberAt(0))
@@ -263,6 +268,7 @@ Module Module1
                     MoveCard(Deck, Hand, Deck.GetCardNumberAt(0))
                 End If
             End While
+
             If Deck.GetNumberOfCards() = 0 And Hand.GetNumberOfCards() < 5 Then
                 GameOver = True
             End If
