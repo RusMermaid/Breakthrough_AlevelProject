@@ -104,6 +104,7 @@ Module Module1
                 For Count = 1 To 5
                     MoveCard(Deck, Hand, Deck.GetCardNumberAt(0))
                 Next
+            
                 AddDifficultyCardsToDeck()
                 Deck.Shuffle()
                 CurrentLock = GetRandomLock()
@@ -120,6 +121,7 @@ Module Module1
                 Score += MoveCard(Hand, Sequence, Hand.GetCardNumberAt(CardChoice - 1))
                 GetCardFromDeck(CardChoice)
             End If
+        
             If CheckIfLockChallengeMet() Then
                 Console.WriteLine()
                 Console.WriteLine("A challenge on the lock has been met.")
@@ -139,6 +141,7 @@ Module Module1
                     Return True
                 End If
             Next
+    
             Return False
         End Function
 
@@ -153,6 +156,7 @@ Module Module1
                     Else
                         CardNumber = ToInt32(Item.Substring(4, 2))
                     End If
+        
                     If Item.Substring(0, 3) = "Dif" Then
                         Dim CurrentCard As New DifficultyCard(CardNumber)
                         CardCol.AddCard(CurrentCard)
@@ -172,6 +176,7 @@ Module Module1
                 Conditions = Item.Split(",").ToList()
                 CurrentLock.AddChallenge(Conditions)
             Next
+
             SplitLine = Line2.Split(";").ToList()
             For Count = 0 To SplitLine.Count - 1
                 If SplitLine(Count) = "Y" Then
