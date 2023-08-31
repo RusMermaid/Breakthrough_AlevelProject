@@ -1,3 +1,4 @@
+Imports System
 Imports System.IO
 Imports System.Convert
 
@@ -104,7 +105,6 @@ Module Module1
                 For Count = 1 To 5
                     MoveCard(Deck, Hand, Deck.GetCardNumberAt(0))
                 Next
-            
                 AddDifficultyCardsToDeck()
                 Deck.Shuffle()
                 CurrentLock = GetRandomLock()
@@ -136,7 +136,6 @@ Module Module1
                 If SequenceAsString.Length > 0 Then
                     SequenceAsString = ", " & SequenceAsString
                 End If
-        
                 SequenceAsString = Sequence.GetCardDescriptionAt(Count) & SequenceAsString
                 If CurrentLock.CheckIfConditionMet(SequenceAsString) Then
                     Return True
